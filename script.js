@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image.classList.add('is-changing')
         setTimeout(() => { image.src = nextImage; image.classList.remove('is-changing') }, 260)
       })
-    }, 3600)
+    }, 4000)
   }
 
   document.querySelectorAll('[data-flow-images]').forEach((strip) => {
