@@ -19,9 +19,20 @@ import { Footer } from "@/components/site/Footer";
 import { Testimonials } from "@/components/site/Testimonials";
 import { ContactForm } from "@/components/site/ContactForm";
 import { NewsletterSignup } from "@/components/site/NewsletterSignup";
-import hero from "@/assets/hero-performance.jpg";
-import crafts from "@/assets/crafts.jpg";
-import film from "@/assets/film.jpg";
+const images = {
+  bracelets: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0014%20%281%29-fpKooSA8D4gYmaVmqGuTM44Vt53vhR.jpg",
+  display: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0015-jNxHajV2D27g2pTyTH1uQmbUp6IAak.jpg",
+  blueBeads: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0016%20%281%29-sKA4onftgep4fjvODsbImbLXBxsHLI.jpg",
+  colorful: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0018-9W9Z5RKGpvDueFTUN72PGCB7dmxJg1.jpg",
+  community: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_20251129_145958_373-73jwtSvaJsdO6KVhgEjTdekMKnm16p.jpg",
+  love: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_20251129_145646_763-i6SXp0TywPOYBSj1JSjf0VBPX9LCUy.jpg",
+  message: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0021-LqdHR24RNJEf8SajmmjOzOGbQCeeJM.jpg",
+  name: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0020%20%281%29-eu69XW0kg73jp6F5rs9YFowvyT8CVU.jpg",
+  smile: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0022%20%281%29-qGuqETzLxLpgyyHGTkuL140qUIQtUO.jpg",
+};
+const hero = images.community;
+const crafts = images.bracelets;
+const film = images.display;
 
 const SITE_URL = "https://fbc-heart-hub.lovable.app";
 const TITLE = "Free Block Creatives | Refugee-Led Arts in Kakuma";
@@ -74,7 +85,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-
 const values = [
   { title: "Inclusion & Diversity", body: "Embracing all identities and backgrounds." },
   { title: "Safety & Dignity", body: "Prioritizing well-being and safeguarding." },
@@ -84,11 +94,17 @@ const values = [
 ];
 
 const objectives = [
-  { icon: Palette, text: "Build artistic and creative skills among youth, students and community members." },
+  {
+    icon: Palette,
+    text: "Build artistic and creative skills among youth, students and community members.",
+  },
   { icon: Film, text: "Support production of films, performances, written works and crafts." },
   { icon: Scissors, text: "Create livelihood opportunities through arts and crafts training." },
   { icon: Megaphone, text: "Amplify refugee and LGBTQ+ voices through storytelling and culture." },
-  { icon: HeartHandshake, text: "Promote psychosocial wellbeing and confidence through creative practice." },
+  {
+    icon: HeartHandshake,
+    text: "Promote psychosocial wellbeing and confidence through creative practice.",
+  },
 ];
 
 const programs = [
@@ -290,10 +306,7 @@ function Index() {
 
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               {programs.map((p) => (
-                <article
-                  key={p.title}
-                  className="overflow-hidden rounded-2xl bg-card shadow-lift"
-                >
+                <article key={p.title} className="overflow-hidden rounded-2xl bg-card shadow-lift">
                   <img
                     src={p.image}
                     alt={p.title}
@@ -397,6 +410,32 @@ function Index() {
 
         <Testimonials />
 
+        {/* Community gallery */}
+        <section className="mx-auto max-w-6xl px-5 pb-20 md:pb-28" aria-labelledby="gallery-heading">
+          <div className="mb-8 max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary">Made by us</p>
+            <h2 id="gallery-heading" className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
+              Beads, stories and belonging
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              A glimpse of the people, handmade work and joyful expression at the heart of FBC.
+            </p>
+          </div>
+          <div className="grid auto-rows-[180px] grid-cols-2 gap-3 sm:grid-cols-4 sm:auto-rows-[150px]">
+            {[
+              [images.blueBeads, "Blue beaded bracelets with playful patterns", "col-span-2 row-span-2"],
+              [images.colorful, "Colorful handmade bracelets arranged for display", "row-span-2"],
+              [images.bracelets, "A collection of colorful beaded bracelets", "row-span-2"],
+              [images.message, "Black and red beaded message bracelet", "col-span-2"],
+              [images.name, "White and red beaded name bracelet", ""],
+              [images.smile, "Yellow smiley face beaded bracelet", ""],
+              [images.love, "Two community members sharing a joyful moment", "col-span-2"],
+            ].map(([src, alt, layout]) => (
+              <img key={src} src={src} alt={alt} loading="lazy" className={`size-full rounded-2xl object-cover ${layout}`} />
+            ))}
+          </div>
+        </section>
+
         {/* Contact */}
         <section id="contact" className="scroll-mt-24 px-5 py-20 md:py-28">
           <div className="mx-auto max-w-4xl rounded-3xl surface-ink p-9 text-center md:p-14">
@@ -448,7 +487,6 @@ function Index() {
             </div>
           </div>
         </section>
-
       </main>
 
       <Footer />

@@ -8,7 +8,6 @@ const links = [
   { href: "#who", label: "Who We Serve" },
   { href: "#voices", label: "Voices" },
   { href: "#contact", label: "Contact" },
-
 ];
 
 export function Nav() {

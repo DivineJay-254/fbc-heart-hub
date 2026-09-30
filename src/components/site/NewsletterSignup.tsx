@@ -3,8 +3,6 @@ import { Loader2, MailPlus } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
 
-import { supabase } from "@/integrations/supabase/client";
-
 const emailSchema = z
   .string()
   .trim()
@@ -26,24 +24,11 @@ export function NewsletterSignup() {
     }
 
     setSaving(true);
-    const { error: insertError } = await supabase
-      .from("newsletter_subscribers")
-      .insert({ email: parsed.data.toLowerCase() });
+    window.location.href = `mailto:freeblockcreatives@gmail.com?subject=${encodeURIComponent("Newsletter subscription")}&body=${encodeURIComponent(`Please add ${parsed.data.toLowerCase()} to the FBC updates list.`)}`;
     setSaving(false);
-
-    if (insertError) {
-      if (insertError.code === "23505" || insertError.message.includes("duplicate")) {
-        setEmail("");
-        toast.success("You're already on the list — thank you!");
-        return;
-      }
-      toast.error("We couldn't sign you up. Please try again.");
-      return;
-    }
-
     setEmail("");
     setError(undefined);
-    toast.success("You're subscribed — FBC updates are on the way.");
+    toast.success("Your email app is ready to send the subscription request.");
   }
 
   return (
