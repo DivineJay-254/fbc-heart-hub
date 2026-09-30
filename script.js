@@ -1,1 +1,73 @@
-document.addEventListener('DOMContentLoaded',()=>{const valueGrid=document.querySelector('.value-grid');if(valueGrid){valueGrid.innerHTML=[['Inclusion & Diversity','Embracing all identities and backgrounds.'],['Safety & Dignity','Prioritizing well-being and safeguarding.'],['Creativity & Expression','Valuing artistic freedom and storytelling.'],['Community Leadership','Refugee-led and community-driven.'],['Accountability','Responsible, transparent use of resources.']].map(([title,body])=>`<article class="value"><i></i><h3>${title}</h3><p>${body}</p></article>`).join('')}const programGrid=document.querySelector('.program-grid');if(programGrid){const programs=[['A','Arts Education & Training','film.jpg',['Teen and student holiday programs','Film, choreography, writing and performance training','Creative learning workshops and mentorship','Garden practice and farming']],['B','Production & Creative Works','hero-performance.jpg',['Film and media production','Music composition and choreography','Scriptwriting, performance and showcases','Community exhibitions and presentations']],['C','Livelihoods & Skills','crafts.jpg',['Beadwork and textile design','Crochet and related crafts','Product development, finishing and quality control','Income-generating creative production and farming']]];programGrid.innerHTML=programs.map(([tag,title,image,items])=>`<article class="program card"><img src="/assets/${image}" alt="${title}" /><div><p class="eyebrow accent-text">Program ${tag}</p><h3>${title}</h3><ul>${items.map(item=>`<li>${item}</li>`).join('')}</ul></div></article>`).join('')}const pills=document.querySelector('.pills');if(pills){pills.innerHTML=['Refugee youth and students','LGBTQ+ refugees','Gender minorities','Emerging artists and creatives','Community members seeking livelihood skills','Most at-risk persons'].map(item=>`<span>${item}</span>`).join('')}const departmentGrid=document.querySelector('.department-grid');if(departmentGrid){const departments=[['Leadership & Governance','Founder / Executive Director sets strategic direction, represents the collective externally and approves major decisions, supported by an Advisory Committee.'],['Management & Administration','Programs Manager / Artistic Director, Finance & Administration Officer, and Communications & Documentation Officer.'],['Program Departments','Arts Education & Training, Production & Creative Works, and Livelihoods & Crafts — each with a lead, trainers and production groups.'],['Safeguarding & Member Support','A Wellbeing & Safeguarding Focal Person protects minors and vulnerable members and handles complaints confidentially.']];departmentGrid.innerHTML=departments.map(([title,body])=>`<article class="card"><span class="feature-mark">✦</span><h3>${title}</h3><p>${body}</p></article>`).join('')}const quoteGrid=document.querySelector('.quote-grid');if(quoteGrid){const quotes=[['Aisha','Youth participant, Arts Education & Training','Before Free Block Creatives I kept my story to myself. Learning film and performance gave me a way to say it out loud — and an audience that listened.'],['Grace','Member, Livelihoods & Crafts','The beadwork and crochet training changed what my week looks like. I make products people actually buy, and that income belongs to me.'],['Daniel','Core member, Production & Creative Works','As an LGBTQ+ refugee, safe rooms are rare. Here safeguarding is not a poster on the wall — it is how rehearsals, feedback and complaints are handled.'],['Visiting facilitator','Community partner, Kakuma','We came in to facilitate one holiday programme and left learning from them. The collective is refugee-led in practice, not just in name.']];quoteGrid.innerHTML=quotes.map(([name,role,quote])=>`<figure class="card quote"><span class="quote-mark">“</span><blockquote>“${quote}”</blockquote><figcaption><b>${name}</b><small>${role}</small></figcaption></figure>`).join('')}const toggle=document.querySelector('.menu-toggle'),mobile=document.querySelector('.mobile-nav');toggle?.addEventListener('click',()=>{const open=mobile.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});mobile?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');toggle?.setAttribute('aria-expanded','false');if(toggle)toggle.textContent='☰'}));document.querySelector('#year').textContent=new Date().getFullYear();const newsletter=document.querySelector('#newsletter-form');newsletter?.addEventListener('submit',e=>{e.preventDefault();const input=document.querySelector('#nl-email'),msg=newsletter.querySelector('.form-message');if(!input.checkValidity()){msg.textContent='Enter a valid email address.';input.focus();return}msg.textContent='Thanks — you are on the FBC updates list.';input.value=''});const contact=document.querySelector('#contact-form');contact?.addEventListener('submit',e=>{e.preventDefault();const msg=contact.querySelector('.form-message');if(!contact.checkValidity()){msg.textContent='Please complete the required fields.';contact.reportValidity();return}const data=new FormData(contact);const subject=encodeURIComponent(data.get('subject')||'Message from website');const body=encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\nOrganisation: ${data.get('organisation')||'—'}\n\n${data.get('message')}`);window.location.href=`mailto:freeblockcreatives@gmail.com?subject=${subject}&body=${body}`;msg.textContent='Opening your email app to send the message.'})});
+document.addEventListener('DOMContentLoaded', () => {
+  const year = document.querySelector('#year')
+  if (year) year.textContent = new Date().getFullYear()
+
+  const menuToggle = document.querySelector('.menu-toggle')
+  const mobileNav = document.querySelector('.mobile-nav')
+  if (menuToggle && mobileNav) {
+    menuToggle.addEventListener('click', () => {
+      const open = menuToggle.getAttribute('aria-expanded') === 'true'
+      menuToggle.setAttribute('aria-expanded', String(!open))
+      mobileNav.classList.toggle('open', !open)
+    })
+  }
+
+  const valueGrid = document.querySelector('.value-grid')
+  if (valueGrid) {
+    valueGrid.innerHTML = [
+      ['Inclusion & Diversity', 'Embracing all identities and backgrounds.'],
+      ['Safety & Dignity', 'Prioritizing well-being and safeguarding.'],
+      ['Creativity & Expression', 'Valuing artistic freedom and storytelling.'],
+      ['Community Leadership', 'Refugee-led and community-driven.'],
+      ['Accountability', 'Responsible, transparent use of resources.']
+    ].map(([title, body]) => `<article class="value"><i></i><h3>${title}</h3><p>${body}</p></article>`).join('')
+  }
+
+  const hero = document.querySelector('.hero > img')
+  const galleryImages = [
+    '/assets/fbc-gallery/display.jpg',
+    '/assets/fbc-gallery/colorful.jpg',
+    '/assets/fbc-gallery/community.jpg',
+    '/assets/fbc-gallery/blue-beads.jpg',
+    '/assets/fbc-gallery/bracelets.jpg'
+  ]
+  if (hero) {
+    let heroIndex = 0
+    setInterval(() => {
+      heroIndex = (heroIndex + 1) % galleryImages.length
+      hero.classList.add('is-changing')
+      setTimeout(() => {
+        hero.src = galleryImages[heroIndex]
+        hero.classList.remove('is-changing')
+      }, 260)
+    }, 4200)
+  }
+
+  const programGrid = document.querySelector('.program-grid')
+  if (programGrid) {
+    const programs = [
+      ['A', 'Arts Education & Training', ['/assets/fbc-gallery/blue-beads.jpg', '/assets/fbc-gallery/colorful.jpg', '/assets/fbc-gallery/display.jpg'], ['Teen and student holiday programs', 'Film, choreography, writing and performance training', 'Creative learning workshops and mentorship', 'Garden practice and farming']],
+      ['B', 'Production & Creative Works', ['/assets/fbc-gallery/community.jpg', '/assets/fbc-gallery/message.jpg', '/assets/fbc-gallery/smile.jpg'], ['Film and media production', 'Music composition and choreography', 'Scriptwriting, performance and showcases', 'Community exhibitions and presentations']],
+      ['C', 'Livelihoods & Skills', ['/assets/fbc-gallery/bracelets.jpg', '/assets/fbc-gallery/colorful.jpg', '/assets/fbc-gallery/name.jpg'], ['Beadwork and textile design', 'Crochet and related crafts', 'Product development, finishing and quality control', 'Income-generating creative production and farming']]
+    ]
+    programGrid.innerHTML = programs.map(([tag, title, images, items]) => `<article class="program card"><img src="${images[0]}" alt="${title}" /><div><p class="eyebrow accent-text">Program ${tag}</p><h3>${title}</h3><ul>${items.map(item => `<li>${item}</li>`).join('')}</ul></div></article>`).join('')
+    let programImageIndex = 0
+    setInterval(() => {
+      programImageIndex = (programImageIndex + 1) % 3
+      document.querySelectorAll('.program img').forEach((image, index) => {
+        const nextImage = programs[index][2][programImageIndex]
+        image.classList.add('is-changing')
+        setTimeout(() => { image.src = nextImage; image.classList.remove('is-changing') }, 260)
+      })
+    }, 4000)
+  }
+
+  document.querySelectorAll('[data-flow-images]').forEach((strip) => {
+    const images = [...strip.querySelectorAll('img')]
+    let index = 0
+    setInterval(() => {
+      index = (index + 1) % images.length
+      images.forEach((image, imageIndex) => { const active = imageIndex === index; image.classList.toggle('is-active', active); image.style.opacity = active ? '1' : '.42'; image.style.transform = active ? 'scale(1.02)' : 'scale(.98)' })
+    }, 2800)
+  })
+})
