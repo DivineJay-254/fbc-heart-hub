@@ -20,15 +20,15 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { ContactForm } from "@/components/site/ContactForm";
 import { NewsletterSignup } from "@/components/site/NewsletterSignup";
 const images = {
-  bracelets: "/assets/fbc-gallery/bracelets.jpg",
-  display: "/assets/fbc-gallery/display.jpg",
-  blueBeads: "/assets/fbc-gallery/blue-beads.jpg",
-  colorful: "/assets/fbc-gallery/colorful.jpg",
-  community: "/assets/fbc-gallery/community.jpg",
-  love: "/assets/fbc-gallery/love.jpg",
-  message: "/assets/fbc-gallery/message.jpg",
-  name: "/assets/fbc-gallery/name.jpg",
-  smile: "/assets/fbc-gallery/smile.jpg",
+  bracelets: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0014%20%281%29-fpKooSA8D4gYmaVmqGuTM44Vt53vhR.jpg",
+  display: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0015-jNxHajV2D27g2pTyTH1uQmbUp6IAak.jpg",
+  blueBeads: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0016%20%281%29-sKA4onftgep4fjvODsbImbLXBxsHLI.jpg",
+  colorful: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0018-9W9Z5RKGpvDueFTUN72PGCB7dmxJg1.jpg",
+  community: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_20251129_145958_373-73jwtSvaJsdO6KVhgEjTdekMKnm16p.jpg",
+  love: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_20251129_145646_763-i6SXp0TywPOYBSj1JSjf0VBPX9LCUy.jpg",
+  message: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0021-LqdHR24RNJEf8SajmmjOzOGbQCeeJM.jpg",
+  name: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0020%20%281%29-eu69XW0kg73jp6F5rs9YFowvyT8CVU.jpg",
+  smile: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20260804-WA0022%20%281%29-qGuqETzLxLpgyyHGTkuL140qUIQtUO.jpg",
 };
 const hero = images.community;
 const crafts = images.bracelets;
