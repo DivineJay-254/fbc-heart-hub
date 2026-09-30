@@ -62,6 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4000)
   }
 
+  const revealItems = document.querySelectorAll('.section, .card, .impact-card, .program, .connection-card, .story-band, .value')
+  revealItems.forEach((item) => item.classList.add('reveal-on-scroll'))
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target) }
+      })
+    }, { threshold: 0.12 })
+    revealItems.forEach((item) => revealObserver.observe(item))
+  } else revealItems.forEach((item) => item.classList.add('is-visible'))
+
   document.querySelectorAll('[data-flow-images]').forEach((strip) => {
     const images = [...strip.querySelectorAll('img')]
     let index = 0
