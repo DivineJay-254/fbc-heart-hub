@@ -19,9 +19,9 @@ import { Footer } from "@/components/site/Footer";
 import { Testimonials } from "@/components/site/Testimonials";
 import { ContactForm } from "@/components/site/ContactForm";
 import { NewsletterSignup } from "@/components/site/NewsletterSignup";
-import hero from "@/assets/hero-performance.jpg";
-import crafts from "@/assets/crafts.jpg";
-import film from "@/assets/film.jpg";
+const hero = "/assets/fbc-gallery/community.jpg";
+const crafts = "/assets/fbc-gallery/display.jpg";
+const film = "/assets/fbc-gallery/bracelets.jpg";
 
 const SITE_URL = "https://fbc-heart-hub.lovable.app";
 const TITLE = "Free Block Creatives | Refugee-Led Arts in Kakuma";
