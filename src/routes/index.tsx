@@ -20,15 +20,15 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { ContactForm } from "@/components/site/ContactForm";
 import { NewsletterSignup } from "@/components/site/NewsletterSignup";
 const images = {
-  bracelets: "/assets/fbc-gallery/bracelets.jpg",
-  display: "/assets/fbc-gallery/display.jpg",
-  blueBeads: "/assets/fbc-gallery/blue-beads.jpg",
-  colorful: "/assets/fbc-gallery/colorful.jpg",
-  community: "/assets/fbc-gallery/community.jpg",
-  love: "/assets/fbc-gallery/love.jpg",
-  message: "/assets/fbc-gallery/message.jpg",
-  name: "/assets/fbc-gallery/name.jpg",
-  smile: "/assets/fbc-gallery/smile.jpg",
+  bracelets: "/assets/fbc-gallery/bracelets.jpg?v=2",
+  display: "/assets/fbc-gallery/display.jpg?v=2",
+  blueBeads: "/assets/fbc-gallery/blue-beads.jpg?v=2",
+  colorful: "/assets/fbc-gallery/colorful.jpg?v=2",
+  community: "/assets/fbc-gallery/community.jpg?v=2",
+  love: "/assets/fbc-gallery/love.jpg?v=2",
+  message: "/assets/fbc-gallery/message.jpg?v=2",
+  name: "/assets/fbc-gallery/name.jpg?v=2",
+  smile: "/assets/fbc-gallery/smile.jpg?v=2",
 };
 const hero = images.community;
 const crafts = images.bracelets;
