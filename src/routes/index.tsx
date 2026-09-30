@@ -74,7 +74,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-
 const values = [
   { title: "Inclusion & Diversity", body: "Embracing all identities and backgrounds." },
   { title: "Safety & Dignity", body: "Prioritizing well-being and safeguarding." },
@@ -84,11 +83,17 @@ const values = [
 ];
 
 const objectives = [
-  { icon: Palette, text: "Build artistic and creative skills among youth, students and community members." },
+  {
+    icon: Palette,
+    text: "Build artistic and creative skills among youth, students and community members.",
+  },
   { icon: Film, text: "Support production of films, performances, written works and crafts." },
   { icon: Scissors, text: "Create livelihood opportunities through arts and crafts training." },
   { icon: Megaphone, text: "Amplify refugee and LGBTQ+ voices through storytelling and culture." },
-  { icon: HeartHandshake, text: "Promote psychosocial wellbeing and confidence through creative practice." },
+  {
+    icon: HeartHandshake,
+    text: "Promote psychosocial wellbeing and confidence through creative practice.",
+  },
 ];
 
 const programs = [
@@ -290,10 +295,7 @@ function Index() {
 
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               {programs.map((p) => (
-                <article
-                  key={p.title}
-                  className="overflow-hidden rounded-2xl bg-card shadow-lift"
-                >
+                <article key={p.title} className="overflow-hidden rounded-2xl bg-card shadow-lift">
                   <img
                     src={p.image}
                     alt={p.title}
@@ -448,7 +450,6 @@ function Index() {
             </div>
           </div>
         </section>
-
       </main>
 
       <Footer />

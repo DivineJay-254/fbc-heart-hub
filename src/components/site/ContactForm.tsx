@@ -34,10 +34,11 @@ export function ContactForm() {
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [sending, setSending] = useState(false);
 
-  const update = (field: Field) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setValues((v) => ({ ...v, [field]: event.target.value }));
-    setErrors((e) => ({ ...e, [field]: undefined }));
-  };
+  const update =
+    (field: Field) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setValues((v) => ({ ...v, [field]: event.target.value }));
+      setErrors((e) => ({ ...e, [field]: undefined }));
+    };
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
