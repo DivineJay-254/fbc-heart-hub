@@ -3,8 +3,6 @@ import { Loader2, Send } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
 
-import { supabase } from "@/integrations/supabase/client";
-
 const contactSchema = z.object({
   name: z
     .string()
@@ -55,22 +53,16 @@ export function ContactForm() {
     }
 
     setSending(true);
-    const { error } = await supabase.from("contact_messages").insert({
-      name: parsed.data.name,
-      email: parsed.data.email,
-      organisation: parsed.data.organisation || null,
-      subject: parsed.data.subject || null,
-      message: parsed.data.message,
-    });
+    const body = [
+      `Name: ${parsed.data.name}`,
+      `Email: ${parsed.data.email}`,
+      `Organisation: ${parsed.data.organisation || "Not provided"}`,
+      `Message: ${parsed.data.message}`,
+    ].join("\\n");
+    window.location.href = `mailto:freeblockcreatives@gmail.com?subject=${encodeURIComponent(parsed.data.subject || "Website enquiry")}&body=${encodeURIComponent(body)}`;
     setSending(false);
-
-    if (error) {
-      toast.error("We couldn't send your message. Please try again or email us directly.");
-      return;
-    }
-
     setValues(empty);
-    toast.success("Thank you — your message has reached Free Block Creatives.");
+    toast.success("Your email app is ready with the message.");
   }
 
   const inputClass =
