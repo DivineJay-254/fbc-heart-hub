@@ -1,6 +1,7 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/$(whoami)/public_html/
-    - if [ -f package-lock.json ]; then npm ci; else npm install; fi
+    - export DEPLOYPATH="/home/$(whoami)/public_html/"
+    - npm install --no-audit --no-fund
     - npm run build
+    - /bin/mkdir -p "$DEPLOYPATH"
     - /bin/cp -R dist/. "$DEPLOYPATH"
