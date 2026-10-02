@@ -1,8 +1,5 @@
 deployment:
-  tasks:
-    - export DEPLOYPATH=/home/rcchedqz/public_html
-    - /bin/mkdir -p "$DEPLOYPATH/assets"
-    - /bin/cp -f index.html about.html programs.html who-we-serve.html voices.html contact.html styles.css script.js "$DEPLOYPATH/"
-    - /bin/cp -Rf public/assets/. "$DEPLOYPATH/assets/"
-    - /bin/cp -f public/favicon.png "$DEPLOYPATH/favicon.png"
-    - /bin/cp -f public/.htaccess "$DEPLOYPATH/.htaccess"
+   tasks:
+     - export DEPLOYPATH=/home/rcchedqz/public_html
+     - /bin/cp -R * $DEPLOYPATH
+ ```
